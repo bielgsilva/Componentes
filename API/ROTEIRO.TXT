@@ -1,0 +1,7 @@
+index.js
+server
+app.user(route)
+userRoute.get(..., funcao)
+funcao= async(req, res) - Controllers
+funcaoAux - Services 
+funcaoSQL - database 

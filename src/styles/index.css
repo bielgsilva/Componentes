@@ -1,0 +1,125 @@
+/* @font-face {
+  font-family:'GangStyle' ;
+  src: url('../assets/fonts/gang.ttf') 
+  format('truetype');
+}  */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap');
+:root {
+  --cinza-claro: #F8F8F9;
+  --cinza-escuro: #F0F0F5;
+  --rosa: #DA0175;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;;
+}
+
+h1{
+  font-family:'GangStyle' ;
+
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-center-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ button{
+    all: unset;
+    height: 52px;
+    background: black;
+    border-radius: 5px;
+    padding: 5px 20px;
+  
+    font-family: 'Montserrat';
+    font-size: 18px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: #F0F0F5;
+  
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+
+  }
+  .modal-screen{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.829);
+    width: 100vw;
+    height: 100vh;
+  }
+
+.overlay{
+  width: 100%;      
+  background: url("https://static.vecteezy.com/ti/vetor-gratis/p3/7152763-vermelho-padrao-estilo-japones-fundo-vermelho-vetor.jpg");
+  z-index: 2;
+}
+.overlay::before,
+.overlay::after {
+    content: "";
+    position: absolute;
+    width: calc(50%);
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.774); 
+     z-index: 1; /* Defina uma z-index menor para o overlay de fundo */
+    
+}
+
+.overlay::before {
+    left: 0;
+    top: 0;
+}
+
+.overlay::after {
+    right: 0;
+    top: 0;
+}
+
+.overlay1{    
+  width: 100%;
+  z-index: 3;
+
+}
+.only-mobile{
+  display: none;
+}
+
+@media only screen and (max-width: 480px) {
+    
+  *{
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+.flex-center{
+  all: unset;
+}
+
+.only-mobile{
+  display: inline;
+  text-align: center;
+
+}
+
+}
