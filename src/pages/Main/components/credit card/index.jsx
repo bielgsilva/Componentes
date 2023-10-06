@@ -35,6 +35,8 @@ const CreditCardForm = () => {
                 cardNumber: formattedCardNumber.replace(/(\d{4})/g, '$1 ').trim()
             };
         }
+
+
         if (id === 'cardMonth') {
             const formattedMonth = value < 10 ? `0${value}` : value;
             updatedCardInfo = {
@@ -48,7 +50,9 @@ const CreditCardForm = () => {
 
     const renderCardOptions = (start, end) => {
         return Array.from({ length: end - start + 1 }, (_, i) => i + start).map((item) => (
-            <option key={item} value={item}>{`${item < 10 ? `0${item}` : `${item}`}`}</option>
+            <option key={item} value={item}>
+                {`${item < 10 ? `0${item}` : `${item}`}`}
+            </option>
         ));
     };
 
@@ -63,10 +67,10 @@ const CreditCardForm = () => {
                             <img src="https://raw.githubusercontent.com/muhammed/interactive-card/main/src/assets/images/visa.png" alt="" />
                         </div>
 
-                        <div className="card__front-numbers">
+                        <div className="card__front-numbers falling-animation">
                             {cardNumber}
                         </div>
-                        
+
                         <div className="card__front-data flex-center">
                             <div>
                                 {fullName}
@@ -91,7 +95,7 @@ const CreditCardForm = () => {
             </div>
 
             <div className="cardInput flex-center-column">
-                <label htmlFor="cardNumber">Card Number</label>
+                <label htmlFor="cardNumber ">Card Number</label>
                 <input
                     type="text"
                     id="cardNumber"
@@ -108,28 +112,42 @@ const CreditCardForm = () => {
                     onChange={handleInputChange}
                 />
 
-                <label htmlFor="cardDate">Card Expiry Date</label>
-                <div className="cardDateInput">
-                    <select id="cardMonth" value={cardMonth} onChange={handleInputChange}>
-                        <option value="">Month</option>
-                        {renderCardOptions(1, 12)}
-                    </select>
-                    <select id="cardYear" value={cardYear} onChange={handleInputChange}>
-                        <option value="">Year</option>
-                        {renderCardOptions(new Date().getFullYear(), new Date().getFullYear() + 10)}
-                    </select>
+                <div className="cardInput__div">
+
+                    <div className="cardInput__div-date">
+                        <label htmlFor="cardDate">Card Expiry Date</label>
+                        <div className="cardInput__div-date-selects flex-center">
+                            <select id="cardMonth" value={cardMonth} onChange={handleInputChange}>
+                                <option value="">Month</option>
+                                {renderCardOptions(1, 12)}
+                            </select>
+                            <select id="cardYear" value={cardYear} onChange={handleInputChange}>
+                                <option value="">Year</option>
+                                {renderCardOptions(new Date().getFullYear(), new Date().getFullYear() + 10)}
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div className="cardInput__div-cvv">
+                        <label htmlFor="cvv">CVV</label>
+                        <input
+                            type="text"
+                            id="cardCVV"
+                            value={cardCVV}
+                            onChange={handleInputChange}
+                            onFocus={() => setCardInfo({ ...cardInfo, isCvvFocused: true })}
+                            onBlur={() => setCardInfo({ ...cardInfo, isCvvFocused: false })}
+                        />
+
+                    </div>
+
                 </div>
 
-                <label htmlFor="cvv">CVV</label>
-                <input
-                    type="text"
-                    id="cardCVV"
-                    value={cardCVV}
-                    onChange={handleInputChange}
-                    onFocus={() => setCardInfo({ ...cardInfo, isCvvFocused: true })}
-                    onBlur={() => setCardInfo({ ...cardInfo, isCvvFocused: false })}
-                />
+                <button>Pagar agora</button>
             </div>
+
         </div>
     );
 };
