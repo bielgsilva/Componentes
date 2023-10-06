@@ -1,10 +1,9 @@
-import './style.css'
-import Conteudo from './components/conteudo';
-
+import './styles.css'
 const Main = () => {
   return (
-    <div className="main">
-      <Conteudo />
+    <div className="main overlay">
+      <div className='main-content overlay1 flex-center'>
+      </div>
     </div>
   );
 };

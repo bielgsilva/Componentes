@@ -8,6 +8,10 @@
   --cinza-claro: #F8F8F9;
   --cinza-escuro: #F0F0F5;
   --rosa: #DA0175;
+  --color-purple: #8B5CF6;
+  --color-pink: #EC4899;
+  --color-gray: #9CA3AF;
+  --color-black: #1F2937;
 }
 
 
@@ -68,7 +72,10 @@ h1{
 
 .overlay{
   width: 100%;      
-  background: url("https://static.vecteezy.com/ti/vetor-gratis/p3/7152763-vermelho-padrao-estilo-japones-fundo-vermelho-vetor.jpg");
+  background: url("https://img.freepik.com/fotos-gratis/quarto-escuro-vazio-fundo-futurista-moderno-sci-fi-ilustracao-3d_35913-2390.jpg?w=826&t=st=1696450092~exp=1696450692~hmac=670e865f4439b32e170c16da8e8dbe9091c2482f215824c2adc2abcff244cc82");
+  background-size: auto;
+  background-size: cover;
+  background-position: center;
   z-index: 2;
 }
 .overlay::before,
