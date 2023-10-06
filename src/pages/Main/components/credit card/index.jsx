@@ -17,6 +17,14 @@ const CreditCardForm = () => {
         const { id, value } = e.target;
         let updatedCardInfo = { ...cardInfo, [id]: value };
 
+          if (id === 'cardNumber') {
+            let formattedCardNumber = value.replace(/\D/g, '').slice(0, 16).trim();
+            updatedCardInfo = {
+                ...updatedCardInfo,
+                cardNumber: formattedCardNumber.replace(/(\d{4})/g, '$1 ').trim()
+            };
+        }
+
         if (id === 'cardCVV') {
             const formattedCardNumber = value.replace(/\D/g, '').slice(0, 3);
             updatedCardInfo = {
@@ -28,14 +36,7 @@ const CreditCardForm = () => {
             updatedCardInfo = { ...updatedCardInfo, isCvvFocused: true };
         }
 
-        if (id === 'cardNumber') {
-            const formattedCardNumber = value.replace(/\D/g, '').slice(0, 16);
-            updatedCardInfo = {
-                ...updatedCardInfo,
-                cardNumber: formattedCardNumber.replace(/(\d{4})/g, '$1 ').trim()
-            };
-        }
-
+      
         setCardInfo(updatedCardInfo);
     };
 
@@ -57,14 +58,18 @@ const CreditCardForm = () => {
                             <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png" alt="" />
                             <img src="https://raw.githubusercontent.com/muhammed/interactive-card/main/src/assets/images/visa.png" alt="" />
                         </div>
-
-                        <div className="card__front-numbers falling-animation">
+                        <div className="card__front-numbers">
                             {cardNumber}
                         </div>
 
-                        <div className="card__front-data flex-center falling-animation ">
+
+                        <div className="card__front-data flex-center">
                             <div>
-                                {fullName}
+                                {fullName.split('').map((digit, index) => (
+                                    <span key={index} className='animate'>
+                                        {digit}
+                                    </span>
+                                ))}
                             </div>
                             <div>
                                 {`${cardMonth < 10 && `${cardMonth}` ? `0${cardMonth}` : ''}`} {`${cardMonth || cardYear ? " / " : ''}`} {cardYear}
@@ -77,7 +82,14 @@ const CreditCardForm = () => {
                 <div className={`card ${isCvvFocused ? 'show' : 'hide'}`}>
                     <div className="card__back flex-center-column">
                         <div className="card__back-banner"></div>
-                        <div className="card__back-cvv .falling-animation ">{cardCVV}</div>
+                        <div className={`card__back-cvv`}>
+                            {cardCVV.split('').map((digit, index) => (
+                                <span key={index} className='animate'>
+                                    {digit}
+                                </span>
+                            ))}
+                        </div>
+
                         <div className="card__back-flag flex-center">
                             <img src="https://raw.githubusercontent.com/muhammed/interactive-card/main/src/assets/images/visa.png" alt="" />
                         </div>
