@@ -36,22 +36,13 @@ const CreditCardForm = () => {
             };
         }
 
-
-        if (id === 'cardMonth') {
-            const formattedMonth = value < 10 ? `0${value}` : value;
-            updatedCardInfo = {
-                ...updatedCardInfo,
-                cardMonth: formattedMonth
-            };
-        }
-
         setCardInfo(updatedCardInfo);
     };
 
     const renderCardOptions = (start, end) => {
         return Array.from({ length: end - start + 1 }, (_, i) => i + start).map((item) => (
             <option key={item} value={item}>
-                {`${item < 10 ? `0${item}` : `${item}`}`}
+                {item}
             </option>
         ));
     };
@@ -71,12 +62,12 @@ const CreditCardForm = () => {
                             {cardNumber}
                         </div>
 
-                        <div className="card__front-data flex-center">
+                        <div className="card__front-data flex-center falling-animation ">
                             <div>
                                 {fullName}
                             </div>
                             <div>
-                                {cardMonth} {`${cardMonth || cardYear ? " / " : ''}`}{cardYear}
+                                {`${cardMonth < 10 && `${cardMonth}` ? `0${cardMonth}` : ''}`} {`${cardMonth || cardYear ? " / " : ''}`} {cardYear}
                             </div>
                         </div>
 
@@ -86,7 +77,7 @@ const CreditCardForm = () => {
                 <div className={`card ${isCvvFocused ? 'show' : 'hide'}`}>
                     <div className="card__back flex-center-column">
                         <div className="card__back-banner"></div>
-                        <div className="card__back-cvv">{cardCVV}</div>
+                        <div className="card__back-cvv .falling-animation ">{cardCVV}</div>
                         <div className="card__back-flag flex-center">
                             <img src="https://raw.githubusercontent.com/muhammed/interactive-card/main/src/assets/images/visa.png" alt="" />
                         </div>
@@ -121,6 +112,7 @@ const CreditCardForm = () => {
                                 <option value="">Month</option>
                                 {renderCardOptions(1, 12)}
                             </select>
+
                             <select id="cardYear" value={cardYear} onChange={handleInputChange}>
                                 <option value="">Year</option>
                                 {renderCardOptions(new Date().getFullYear(), new Date().getFullYear() + 10)}
