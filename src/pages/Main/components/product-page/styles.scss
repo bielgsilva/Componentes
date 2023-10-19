@@ -1,0 +1,175 @@
+:root {
+   --bg-color-1: linear-gradient(180deg, #f1a9a900, #e66767);
+   --bg-color-2: linear-gradient(180deg, #4c4c4c00, #262626);
+   --bg-color-3: linear-gradient(180deg, #8a9fb200, #5f7991);
+   --bg-color-4: linear-gradient(180deg, #97afc300, #6789a7);
+   --bg-color-5: linear-gradient(180deg, #afa6a000, #8c7f76);
+   --bg-color-6: linear-gradient(180deg, #aaadac00, #838786);
+}
+
+span {
+   font-size: 25px;
+}
+
+h2 {
+   font-size: 50px;
+}
+
+.pageProduct {
+   height: 100vh;
+   width: 100%;
+   color: rgb(255, 255, 255);
+}
+
+.product {
+   gap: 50px;
+
+   &__image {
+      height: auto;
+      &.shake {
+         animation: shake 0.7s cubic-bezier(.36, .07, .19, .97) both;
+      }
+
+      @keyframes shake {
+
+         10%,
+         90% {
+            transform: translate3d(-1px, 0, 0) rotate(-1deg);
+         }
+
+         20%,
+         80% {
+            transform: translate3d(2px, 0, 0) rotate(2deg);
+         }
+
+         30%,
+         50%,
+         70% {
+            transform: translate3d(-3px, 0, 0) rotate(-3deg);
+         }
+
+         40%,
+         60% {
+            transform: translate3d(3px, 0, 0) rotate(3deg);
+         }
+      }
+
+      & img {
+         animation: floating 5s infinite;
+
+         @keyframes floating {
+
+            0%,
+            100% {
+               transform: translateY(-2.5%);
+            }
+
+            50% {
+               transform: translateY(0);
+            }
+         }
+      }
+   }
+
+   &__infos {
+      gap: 50px;
+      background-image: linear-gradient(196deg, #0000006b, #0000002d);
+      border-radius: 10px;
+      padding: 50px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.562);
+
+      &-titles {
+         gap: 10px;
+
+         & p {
+            background: #121212;
+            color: #fff;
+            font-weight: 500;
+            font-size: 15px;
+            width: fit-content;
+            padding: 10px 15px;
+            border-radius: 99px;
+         }
+
+      }
+
+      &-price {
+         height: auto;
+         width: 100%;
+         gap: 20px;
+
+
+         &-links {
+            gap: 30px;
+
+            .desactive {
+               color: rgba(255, 255, 255, 0.445);
+            }
+
+            & span {
+               cursor: pointer;
+            }
+
+            & span:hover {
+               color: rgba(255, 255, 255, 0.623);
+            }
+         }
+
+         &-details,
+         &-description {
+            height: 100px;
+            gap: 30px;
+            text-align: center;
+            font-size: 25px;
+         }
+
+         &-description {
+            font-size: 22px;
+         }
+      }
+
+      &-btn {
+         gap: 20px;
+         
+         img {
+            width: 80px;
+            border-radius: 10px;
+            cursor: pointer;
+
+         }
+
+         .selected {
+            border: 3px solid black;
+
+         }
+
+
+      }
+
+      &-whatsapp {
+         gap: 20px;
+         text-align: center;
+
+         a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            background-color: #25d366; 
+            border-radius: 20px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.342);
+
+         }
+
+         img {
+            width: 30px;
+            margin-right: 10px;
+         }
+      }
+
+   }
+
+}

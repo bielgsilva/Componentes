@@ -72,7 +72,7 @@ const CreditCardForm = () => {
                                 ))}
                             </div>
                             <div>
-                                {`${cardMonth < 10 && `${cardMonth}` ? `0${cardMonth}` : ''}`} {`${cardMonth || cardYear ? " / " : ''}`} {cardYear}
+                                {`${cardMonth < 10 && `${cardMonth}` ? `0${cardMonth}` : cardMonth}`} {`${cardMonth || cardYear ? " / " : ''}`} {cardYear}
                             </div>
                         </div>
 
